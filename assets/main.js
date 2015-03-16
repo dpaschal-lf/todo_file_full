@@ -31,7 +31,7 @@ details:todoadd.find("textarea[name=details]").val(),
             success: function(data){
                 if(data.success)
                 {
-                    $("#todo-display > .display_container").html(data.html);
+                    $(".todo-list").html(data.html);
                 }
             }
         });
