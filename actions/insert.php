@@ -6,12 +6,19 @@
         
         $todo_records = json_decode($todo_json,true);
         
-        $con = new mysqli("localhost", "root", "root", "todo");
+        //connect to the database
+//        $con = new mysqli("localhost", "root", "root", "todo");
+        $con = mysqli_connect("localhost", "root", "root", "todo");
         
-        $con->query('TRUNCATE todo_items');
+        //remove all todo items by default, makes it easier to not duplicate content with multiple refreshes of this page
+//        $con->query('TRUNCATE todo_items');
         
+        mysqli_query($con, 'TRUNCATE todo_items');
+        
+        //allways thinkinga about errors and debugging
         $errors = [];
         
+        //lets loop through the todo.json file and insert the contents into the database
         foreach($todo_records as $key=>$this_record)
         {
             
@@ -20,24 +27,31 @@
             $sql .= $this_record['date'].',';
             $sql .= '"'.$this_record['details'].'");';                
             
-            $result = $con->query($sql);
+//            $result = $con->query($sql);
+            
+            $result = mysqli_query($con, $sql);
             
             if(!$result){
-                $errors[] = $con->error;
+                $errors[] = mysqli_error($result);
             }
         }
-           
+        
+        
+        //check for errors   
         if(count($errors) == 0){
             $output=['success'=>true, 'message'=>'Inserted content successfully'];
         }else{
             $output=['success'=>false, 'message'=>$errors];
         }
         
+        //close the connection to the database
         $con->close();
     }
     else
     {
         $output=['success'=>false, 'message'=>'No todo records!'];
     }
+
+    //respond to the request with output
     echo json_encode($output);
 ?>
