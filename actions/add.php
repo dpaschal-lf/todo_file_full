@@ -40,7 +40,7 @@ if(isset($_POST))
     $result = mysqli_query($con, $sql);
     
     if(!$result){
-        $error['mysql_error'] = mysqli_error($result);
+        $error['mysql_error'] = mysqli_error($con);
     }
     if(count($error)==0){
         $output['success']=true;
