@@ -19,13 +19,13 @@
     <?php include( 'includes/header.php'); ?>
     <div class="container">
         <div class="row">
-            <div class="col-md-7 todo-display-container">
+            <div class="col-md-8 todo-display-container">
                 <button id="display_refresh" type="button" class="btn btn-default glyphicon glyphicon-refresh"></button>
                 <div class="todo-list">
                     <p>My Todo items should be here</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div id="todo-add" class="panel panel-default">
                     <div class="panel-heading">Create New Todo</div>
                     <div class="panel-body">
@@ -40,7 +40,8 @@
                 </div>
             </div>
         </div>
-        <?php include( 'includes/footer.php'); ?>
+    </div>
+    <?php include( 'includes/footer.php'); ?>
 </body>
 
 </html>

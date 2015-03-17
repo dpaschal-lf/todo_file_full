@@ -27,15 +27,12 @@
             $sql .= $this_record['date'].',';
             $sql .= '"'.$this_record['details'].'");';                
             
-//            $result = $con->query($sql);
-            
             $result = mysqli_query($con, $sql);
             
             if(!$result){
                 $errors[] = mysqli_error($result);
             }
         }
-        
         
         //check for errors   
         if(count($errors) == 0){

@@ -1,5 +1,6 @@
 <?php
     //function to generate a random string of letter and numbers.  if no argument is given, generates one 10 characters long
+
     function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
